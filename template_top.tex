@@ -1,0 +1,50 @@
+%
+% Invoice LaTeX template
+% skers@kth.se
+% wikmans@kth.se
+%
+\documentclass[a4paper, 12pt, oneside]{article}%{report}
+
+%\usepackage{ascii}
+\usepackage{avant}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{lmodern}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[swedish]{babel}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+% Invoice
+\newcommand{\invoiceNumber}    [1] {#1 \\}
+\newcommand{\invoiceFromDate}  [1] {#1}
+\newcommand{\invoiceToDate}    [1] {#1}
+\newcommand{\invoiceDate}      [2] {\small\invoiceFromDate{#1} -- \invoiceToDate{#2} \\}
+
+% Header
+\newcommand{\clientName}       [1] {\huge{#1}}
+\newcommand{\clientAddrStreet} [1] {\small{#1} }
+\newcommand{\clientAddrZip}    [1] {\small{#1} }
+\newcommand{\clientAddrCity}   [1] {\small{#1} }
+\newcommand{\client}           [5] {\clientName{#1} & INVOICE \\ \clientAddrStreet{#2} &
+   \#\invoiceNumber{#5} \clientAddrZip{#3} \clientAddrCity{#4} & \\ \\}
+
+% Each table cell for the Consultant row
+\newcommand{\conFirstName}  [1] {#1}
+\newcommand{\conSecondName} [1] {#1 &}
+\newcommand{\conHours}      [1] {#1 h &}
+\newcommand{\conRate}       [1] {#1 kr/h &}
+\newcommand{\conTotal}      [1] {\large{#1} kr}
+% And combine them all into one row
+\newcommand{\consultant}    [5] {\conFirstName{#1} \conSecondName{#2} \conHours{#3} \conRate{#4} \conTotal{#5} \\}
+\newcommand{\totalCost}     [1] {\\ \textbf{Total}& & & \large\textbf{#1 kr}}
+
+\thispagestyle{empty}
+\pagestyle{empty}
+\begin{document}
+%\today
+
+\begin{center}
+   \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%% clientPlaceholder
