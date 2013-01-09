@@ -13,7 +13,7 @@ print_usage () {
     echo "    \"<invoiceNumber>\""
     echo "    \"<name>\" \"<address>\" \"<zip/postal code>\" \"<city>\""
     echo "    \"<fromDate>\" \"<toDate>\""
-    echo "    \"<firstName>\" \"<lastName>\" \"<hours>\" \"<rate>\" \"<cost>\""
+    echo "    \"<firstName>\" \"<lastName>\" \"<hours>\" \"<rate>\""
 }
 
 if [[ $# -gt 4 ]]; then

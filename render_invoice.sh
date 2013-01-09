@@ -5,8 +5,8 @@ print_usage () {
     echo "$0"
     echo "    \"<invoiceNumber>\""
     echo "    \"<name>\" \"<address>\" \"<zip/postal code>\" \"<city>\""
-    echo "    \"<firstName>\" \"<lastName>\" \"<hours>\" \"<rate>\" \"<cost>\""
     echo "    \"<fromDate>\" \"<toDate>\""
+    echo "    \"<firstName>\" \"<lastName>\" \"<hours>\" \"<rate>\""
 }
 
 if [[ $# -gt 4 ]]; then
@@ -31,36 +31,43 @@ if [[ $# -gt 4 ]]; then
 
     # Print consultant rows
     i=0
+    NCELLS=4    # Number of cells on consultant row
     for j in ${@:8}; do
-        ATTR=$(( ((i++)) % 5 ))
+        ATTR=$(( ((i++)) % $NCELLS ))
+
         case "${ATTR}" in
 
+        # Name cell (first name)
         0)  echo "\consultant"
-            echo -e "   {$j}"   # Name cell (first name)
+            echo -e "   {$j}"
             ;;
 
-        1)  echo -e "   {$j}"   # Name cell (last name)
+        # Name cell (last name)
+        1)  echo -e "   {$j}"
             ;;
 
-        2)  echo -e "   {$j}"   # Hours cell
+        # Hours cell
+        2)  echo -e "   {$j}"
+            CONSULTANT_COST=$j
             ;;
 
-        3)  echo -e "   {$j}"   # Rate cell
+        # Rate cell
+        3)  echo -e "   {$j}"
+        # Consultant cost cell
+            CONSULTANT_COST=$(( $CONSULTANT_COST * $j ))
+            echo "   {$CONSULTANT_COST}"
+        # Add to the total cost cell
+            TOTAL_COST=$(( ${TOTAL_COST} + $CONSULTANT_COST ))
             ;;
+    esac
+done
 
-        4)  echo -e "   {$j}"   # Consultant cost cell
-            TOTAL_COST=$(( ${TOTAL_COST} + $j ))
-            ;;
-
-        esac
-    done
-
-    echo ""
-    echo "   \\\\"
-    echo "   \hline"
-    echo "   \totalCost"
-    echo "      {${TOTAL_COST}}"
-    cat template_end.tex
+echo ""
+echo "   \\\\"
+echo "   \hline"
+echo "   \totalCost"
+echo "      {${TOTAL_COST}}"
+cat template_end.tex
 else
     print_usage
 fi
