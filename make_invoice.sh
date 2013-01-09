@@ -7,6 +7,8 @@
 # It then outputs a PDF file using pdflatex.
 #
 
+MYPATH=hackish_invoice
+
 print_usage () {
     echo "USAGE:"
     echo "$0"
@@ -17,10 +19,15 @@ print_usage () {
 }
 
 if [[ $# -gt 4 ]]; then
-    ./render_invoice.sh "$@" > source.tex
     FNAME=$1
-    mv source.tex $FNAME.tex
+    cd $MYPATH
+    . render_invoice.sh "$@" > $FNAME.tex
     pdflatex $FNAME.tex
+    rm $FNAME.aux
+    rm $FNAME.log
+    rm $FNAME.tex
+    cd -
+    echo "PDF DONE: $FNAME"
 else
     print_usage
 fi
