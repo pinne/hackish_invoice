@@ -30,7 +30,7 @@ if [[ $# -gt 4 ]]; then
 
     mv $FNAME.pdf $MYPDFDESTINATION/
 
-    cd -
+    cd - > /dev/null
     echo "PDF DONE: $FNAME"
 else
     print_usage
