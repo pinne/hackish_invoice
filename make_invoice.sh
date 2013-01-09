@@ -5,8 +5,8 @@ print_usage () {
     echo "$0"
     echo "    \"<invoiceNumber>\""
     echo "    \"<name>\" \"<address>\" \"<zip/postal code>\" \"<city>\""
-    echo "    \"<firstName>\" \"<lastName>\" \"<hours>\" \"<rate>\" \"<cost>\""
     echo "    \"<fromDate>\" \"<toDate>\""
+    echo "    \"<firstName>\" \"<lastName>\" \"<hours>\" \"<rate>\" \"<cost>\""
 }
 
 if [[ $# -gt 4 ]]; then
