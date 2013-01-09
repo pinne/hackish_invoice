@@ -31,28 +31,25 @@ if [[ $# -gt 4 ]]; then
 
     # Print consultant rows
     i=0
-    NCELLS=4    # Number of cells on consultant row
+    NCELLS=3    # Number of cells on consultant row
+    IFS=$'\n'   # This will make the for-loop preserve spaces
     for j in ${@:8}; do
         ATTR=$(( ((i++)) % $NCELLS ))
 
         case "${ATTR}" in
 
-        # Name cell (first name)
+        # Name cell
         0)  echo "\consultant"
-            echo -e "   {$j}"
-            ;;
-
-        # Name cell (last name)
-        1)  echo -e "   {$j}"
+            echo -e "   {${j}}"
             ;;
 
         # Hours cell
-        2)  echo -e "   {$j}"
+        1)  echo -e "   {$j}"
             CONSULTANT_COST=$j
             ;;
 
         # Rate cell
-        3)  echo -e "   {$j}"
+        2)  echo -e "   {$j}"
         # Consultant cost cell
             CONSULTANT_COST=$(( $CONSULTANT_COST * $j ))
             echo "   {$CONSULTANT_COST}"

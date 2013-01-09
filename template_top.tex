@@ -31,14 +31,13 @@
    \invoiceNumber{#5} \clientAddrZip{#3} \clientAddrCity{#4} & \\ \\}
 
 % Each table cell for the Consultant row
-\newcommand{\conFirstName}  [1] {#1}
-\newcommand{\conSecondName} [1] {#1 &}
-\newcommand{\conHours}      [1] {#1 h &}
-\newcommand{\conRate}       [1] {#1 kr/h &}
-\newcommand{\conTotal}      [1] {\large{#1} kr}
+\newcommand{\conName}    [1] {#1 &}
+\newcommand{\conHours}   [1] {#1 h &}
+\newcommand{\conRate}    [1] {#1 kr/h &}
+\newcommand{\conTotal}   [1] {\large{#1} kr}
 % And combine them all into one row
-\newcommand{\consultant}    [5] {\conFirstName{#1} \conSecondName{#2} \conHours{#3} \conRate{#4} \conTotal{#5} \\}
-\newcommand{\totalCost}     [1] {\\ \textbf{Total}& & & \large\textbf{#1 kr}}
+\newcommand{\consultant} [4] {\conName{#1} \conHours{#2} \conRate{#3} \conTotal{#4} \\}
+\newcommand{\totalCost}  [1] {\\ \textbf{Total}& & & \large\textbf{#1 kr}}
 
 \thispagestyle{empty}
 \pagestyle{empty}

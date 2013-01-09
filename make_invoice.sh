@@ -8,6 +8,7 @@
 #
 
 MYPATH=hackish_invoice
+MYPDFDESTINATION=../public/invoices
 
 print_usage () {
     echo "USAGE:"
@@ -15,7 +16,7 @@ print_usage () {
     echo "    \"<invoiceNumber>\""
     echo "    \"<name>\" \"<address>\" \"<zip/postal code>\" \"<city>\""
     echo "    \"<fromDate>\" \"<toDate>\""
-    echo "    \"<firstName>\" \"<lastName>\" \"<hours>\" \"<rate>\""
+    echo "    \"<name>\" \"<hours>\" \"<rate>\""
 }
 
 if [[ $# -gt 4 ]]; then
@@ -26,6 +27,9 @@ if [[ $# -gt 4 ]]; then
     rm $FNAME.aux
     rm $FNAME.log
     rm $FNAME.tex
+
+    mv $FNAME.pdf $MYPDFDESTINATION/
+
     cd -
     echo "PDF DONE: $FNAME"
 else
