@@ -10,7 +10,7 @@ print_usage () {
 }
 
 if [[ $# -gt 4 ]]; then
-    ./render_invoice.sh $@ > source.tex
+    ./render_invoice.sh "$@" > source.tex
     FNAME=$1
     mv source.tex $FNAME.tex
     pdflatex $FNAME.tex
