@@ -56,15 +56,15 @@ if [[ $# -gt 4 ]]; then
         # Add to the total cost cell
             TOTAL_COST=$(( ${TOTAL_COST} + $CONSULTANT_COST ))
             ;;
-    esac
-done
+        esac
+    done
 
-echo ""
-echo "   \\\\"
-echo "   \hline"
-echo "   \totalCost"
-echo "      {${TOTAL_COST}}"
-cat template_end.tex
+    echo ""
+    echo "   \\\\"
+    echo "   \hline"
+    echo "   \totalCost"
+    echo "      {${TOTAL_COST}}"
+    cat template_end.tex
 else
     print_usage
 fi
