@@ -21,9 +21,9 @@ print_usage () {
 
 if [[ $# -gt 4 ]]; then
     FNAME=$1
-    cd $MYPATH
+    cd $MYPATH > /dev/null
     . render_invoice.sh "$@" > $FNAME.tex
-    pdflatex $FNAME.tex
+    pdflatex $FNAME.tex > /dev/null
     rm $FNAME.aux
     rm $FNAME.log
     rm $FNAME.tex
