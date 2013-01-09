@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# Varm kod - skers@kth.se 2013
+# 
+# Wrapper script for render_invoice.sh
+# This takes arguments and passes them on to render_invoice.sh
+# It then outputs a PDF file using pdflatex.
+#
 
 print_usage () {
     echo "USAGE:"
