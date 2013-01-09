@@ -8,6 +8,7 @@ Very ugly, but still pretty, invoice using LaTeX and nasty scripts.
     ./make_invoice
         "<invoiceNumber>"
         "<clientName>" "<clientAddress>" "<clientPostalCode>" "<clientCity>"
+        "<projectDescription>"
         "<fromDate>" "<toDate>"
         "<consultantName>" "<hours>" "<rate>"
         "<consultantName>" "<hours>" "<rate>"

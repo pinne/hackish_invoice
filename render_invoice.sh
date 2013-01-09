@@ -5,6 +5,7 @@ print_usage () {
     echo "$0"
     echo "    \"<invoiceNumber>\""
     echo "    \"<name>\" \"<address>\" \"<zip/postal code>\" \"<city>\""
+    echo "    \"<projectDescription>\""
     echo "    \"<fromDate>\" \"<toDate>\""
     echo "    \"<consultantName>\" \"<hours>\" \"<rate>\""
 }
@@ -17,23 +18,24 @@ if [[ $# -gt 4 ]]; then
     echo "   {${4}}"
     echo "   {${5}}"
     #echo "   {${1}}"
+    cat template_mid.tex
     echo ""
-    echo "\vspace*{10px}"
-    echo "Invoice: \invoiceNumber"
+    echo "\invoiceNumber"
     echo "   {${1}}"
     echo ""
-    echo "\vspace*{10px}"
-    echo "\invoiceDate"
+    echo "\projectDetails"
     echo "   {${6}}"
+    echo ""
+    echo "\invoiceDate"
     echo "   {${7}}"
-    echo "\hline"
-    cat template_mid.tex
+    echo "   {${8}}"
+    cat template_mid2.tex
 
     # Print consultant rows
     i=0
     NCELLS=3    # Number of cells on consultant row
     IFS=$'\n'   # This will make the for-loop preserve spaces
-    for j in ${@:8}; do
+    for j in ${@:9}; do
         ATTR=$(( ((i++)) % $NCELLS ))
 
         case "${ATTR}" in

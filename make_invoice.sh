@@ -15,6 +15,7 @@ print_usage () {
     echo "$0"
     echo "    \"<invoiceNumber>\""
     echo "    \"<name>\" \"<address>\" \"<zip/postal code>\" \"<city>\""
+    echo "    \"<projectDescription>\""
     echo "    \"<fromDate>\" \"<toDate>\""
     echo "    \"<consultantName>\" \"<hours>\" \"<rate>\""
 }
@@ -23,14 +24,14 @@ if [[ $# -gt 4 ]]; then
     FNAME=$1
     cd $MYPATH > /dev/null
     . render_invoice.sh "$@" > $FNAME.tex
-    pdflatex $FNAME.tex > /dev/null
+    pdflatex $FNAME.tex #> /dev/null
     rm $FNAME.aux
     rm $FNAME.log
     rm $FNAME.tex
 
     mv $FNAME.pdf $MYPDFDESTINATION/
 
-    cd - > /dev/null
+    cd - #> /dev/null
     echo "PDF DONE: $FNAME"
 else
     print_usage

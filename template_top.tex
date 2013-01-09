@@ -17,18 +17,25 @@
 \usepackage{tabularx}
 
 % Invoice
-\newcommand{\invoiceNumber}    [1] {#1 \\}
+\newcommand{\invoiceNumber}    [1] {\textbf{Invoice reference:} #1 \\}
 \newcommand{\invoiceFromDate}  [1] {#1}
 \newcommand{\invoiceToDate}    [1] {#1}
-\newcommand{\invoiceDate}      [2] {\small\invoiceFromDate{#1} -- \invoiceToDate{#2} \\}
+\newcommand{\invoiceDate}      [2] {
+   \textbf{Period:} \small\invoiceFromDate{#1} -- \invoiceToDate{#2} \\
+}
 
 % Header
 \newcommand{\clientName}       [1] {\huge{#1}}
 \newcommand{\clientAddrStreet} [1] {\small{#1} }
 \newcommand{\clientAddrZip}    [1] {\small{#1} }
 \newcommand{\clientAddrCity}   [1] {\small{#1} }
-\newcommand{\client}           [5] {\clientName{#1} & INVOICE \\ \clientAddrStreet{#2} &
-   \invoiceNumber{#5} \clientAddrZip{#3} \clientAddrCity{#4} & \\ \\}
+\newcommand{\client}           [4] {
+   \clientName{#1} & INVOICE \\
+   \clientAddrStreet{#2} \\
+   \clientAddrZip{#3} \clientAddrCity{#4} \\
+}
+
+\newcommand{\projectDetails}      [1] {\textbf{Project details:} #1 \\}
 
 % Each table cell for the Consultant row
 \newcommand{\conName}    [1] {#1 &}
@@ -36,7 +43,9 @@
 \newcommand{\conRate}    [1] {#1 kr/h &}
 \newcommand{\conTotal}   [1] {\large{#1} kr}
 % And combine them all into one row
-\newcommand{\consultant} [4] {\conName{#1} \conHours{#2} \conRate{#3} \conTotal{#4} \\}
+\newcommand{\consultant} [4] {
+   \conName{#1} \conHours{#2} \conRate{#3} \conTotal{#4} \\
+}
 \newcommand{\totalCost}  [1] {\\ \textbf{Total}& & & \large\textbf{#1 kr}}
 
 \thispagestyle{empty}
