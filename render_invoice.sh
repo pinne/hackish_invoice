@@ -31,6 +31,7 @@ if [[ $# -gt 4 ]]; then
     echo "   {${8}}"
     cat template_mid2.tex
 
+    TOTAL_COST=0
     # Print consultant rows
     i=0
     NCELLS=3    # Number of cells on consultant row
@@ -53,10 +54,10 @@ if [[ $# -gt 4 ]]; then
         # Rate cell
         2)  echo -e "   {$j}"
         # Consultant cost cell
-            CONSULTANT_COST=$(( $CONSULTANT_COST * $j ))
+            CONSULTANT_COST=`echo -e "$CONSULTANT_COST * $j" | bc`
             echo "   {$CONSULTANT_COST}"
         # Add to the total cost cell
-            TOTAL_COST=$(( ${TOTAL_COST} + $CONSULTANT_COST ))
+            TOTAL_COST=`echo -e "$TOTAL_COST + $CONSULTANT_COST" | bc`
             ;;
         esac
     done
